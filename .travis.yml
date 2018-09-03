@@ -1,12 +1,6 @@
 language: cpp
 before_script:
-  - sudo apt-get install libgtest-dev cmake -y
-
-  - cd /usr/src/gtest
-  - sudo cmake .
-  - sudo make
-  - sudo cp *.a /usr/lib
-  - cd "${TRAVIS_BUILD_DIR}"
+  - sudo apt-get install libboost-test-dev -y
 script: 
   - cmake .
   - cmake --build .
