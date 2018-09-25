@@ -6,12 +6,12 @@ else()
    project(bccl VERSION 0.0.1)
 endif()
 
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+find_package(Boost REQUIRED)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(bccl src/main.cpp)
+add_executable(bccl custom_concepts.h main.cpp)
 
 if (MSVC)
 	set_target_properties(bccl PROPERTIES
@@ -23,9 +23,11 @@ else()
 	)	
 endif()
 
+
+
 set_target_properties(bccl PROPERTIES
   COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-  INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+  INCLUDE_DIRECTORIES "${Boost_INCLUDE_DIR}"
 )
 
 target_link_libraries(bccl ${Boost_LIBRARIES} )
